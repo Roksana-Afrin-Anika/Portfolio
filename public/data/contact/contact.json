@@ -1,0 +1,43 @@
+{
+  "title": "Contact Us",
+  "heading": "Let's Create Something Beautiful Together",
+  "formHeading": "TELL US ABOUT YOUR INTERIOR DESIGN PROJECT",
+  "process": {
+    "title": "Here’s How It Works",
+    "steps": [
+      {
+        "phase": "Step 1: Discovery Phase",
+        "details": [
+          "Phone consultation to discuss your project",
+          "In-home/off-site consultation to assess your needs and determine project scope",
+          "Design proposal outlining project scope and fee"
+        ]
+      },
+      {
+        "phase": "Step 2: Design Phase",
+        "details": [
+          "Measure space and create floor plans",
+          "Develop a unique design plan perfect for your space",
+          "Present concept boards, schematic designs, and estimated cost",
+          "Make necessary changes and finalize the design plan"
+        ]
+      },
+      {
+        "phase": "Step 3: Delivery Phase",
+        "details": [
+          "Assist with selecting the right contractor",
+          "Work closely with contractors to oversee the progress",
+          "Coordinate delivery and installation of furnishings and accessories"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "text": "Ready to get started? Contact Nu Curations today to schedule your consultation.",
+    "contactInfo": {
+      "email": "nucurations@gmail.com",
+      "phone": "+91 12345 67890",
+      "address": "123 Interior Design Studio, Mumbai, India"
+    }
+  }
+}

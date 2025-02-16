@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "title": "A Full Service Interior Design  Studio Offering Luxury Services In Greater Seattle Area",
+    "backgroundImage": "/data/images/fabrics.png",
+    "cta": {
+      "text": "See Our Works",
+      "url": "/portfolio"
+    }
+  },
+  "sliderImages": [
+    "/data/home/slider_images/1.jpg",
+    "/data/home/slider_images/2.JPG",
+    "/data/home/slider_images/2.png",
+    "/data/home/slider_images/6.jpeg",
+    "/data/home/slider_images/IMG_0431.JPG",
+    "/data/home/slider_images/living wide.jpg"
+  ],
+  "featured": [
+    {
+      "title": "Kenmore-treeside",
+      "description": "Discover our latest collection of handcrafted items.",
+      "image": "/data/home/kenmore-treeside/breakfast nook 4.jpg",
+      "url": "/portfolio/kenmore-treeside"
+    },
+    {
+      "title": "Ballard Deco & Mid-Century Baths",
+      "description": "Exclusive designs for modern living.",
+      "image": "/data/home/denise-home/IMG_0423.JPG",
+      "url": "/portfolio/denise-home"
+    },
+    {
+      "title": "Contemporary-Northwest-Oasis",
+      "description": "Exclusive designs for modern living.",
+      "image": "/data/home/contemporary-northwest-oasis/3.jpeg",
+      "url": "/portfolio/kristine-home"
+    },
+    {
+      "title": "Patio-Revival",
+      "description": "Exclusive designs for modern living.",
+      "image": "/data/home/patio-revival/1.jpg",
+      "url": "/portfolio/patio-revival"
+    },
+    {
+      "title": "Playful-Dreams",
+      "description": "Exclusive designs for modern living.",
+      "image": "/data/home/playful-dreams/1.png",
+      "url": "/portfolio/playful-dreams"
+    },
+    {
+      "title": "Retro-Gems",
+      "description": "Exclusive designs for modern living.",
+      "image": "/data/home/retro-gems/1.jpg",
+      "url": "/portfolio/retro-gems"
+    }
+  ]
+}

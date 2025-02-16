@@ -1,0 +1,12 @@
+{
+  "title": "Playful Dreams",
+  "date": "2023-04-01",
+  "type": "portfolio",
+  "image": "images/projects/playful-dreams/thumb.png",
+  "category": [""],
+  "project_images": [
+    "images/projects/playful-dreams/1.png",
+    "images/projects/playful-dreams/2.png",
+    "images/projects/playful-dreams/3.png"
+  ]
+}

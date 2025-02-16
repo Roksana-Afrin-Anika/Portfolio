@@ -1,0 +1,13 @@
+{
+  "title": "Retro Gems",
+  "date": "2023-05-01",
+  "type": "portfolio",
+  "image": "images/projects/retro-gems/thumb.png",
+  "category": [""],
+  "project_images": [
+    "images/projects/retro-gems/1.jpg",
+    "images/projects/retro-gems/2.JPG",
+    "images/projects/retro-gems/3.JPG",
+    "images/projects/retro-gems/4.JPG"
+  ]
+}

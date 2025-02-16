@@ -1,101 +1,118 @@
-import Image from "next/image";
+"use client"; // Ensure this is a Client Component if using Next.js
+
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [homeData, setHomeData] = useState(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    // Fetch the home.json data
+    fetch("/data/home/home.json")
+      .then((response) => response.json())
+      .then((data) => setHomeData(data))
+      .catch((error) => console.error("Error fetching home data:", error));
+  }, []);
+
+  if (!homeData) {
+    return <div>Loading...</div>; // Show a loading state while data is being fetched
+  }
+
+  return (
+    <div className="font-sans">
+      {/* Hero Section */}
+      <section
+        className="relative h-screen flex items-center justify-center text-center overflow-hidden"
+        style={{
+          backgroundImage: `url('${homeData.hero.backgroundImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "top center",
+        }}
+      >
+        {/* Content */}
+        <div className="relative z-10 text-white max-w-4xl px-4">
+          <h1 className="text-5xl md:text-6xl font-light font-josefin-sans text-black mb-14">
+            {homeData.hero.title}
+          </h1>
+          <div className="flex gap-4 justify-center">
+            <a
+              href={homeData.hero.cta.url}
+              className="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
+            >
+              {homeData.hero.cta.text}
+            </a>
+            <a
+              href="/contact"
+              className="border font-montserrat text-black px-6 py-3 rounded-lg font-semibold bg-[#D2B48C] hover:bg-[#8B4513] hover:text-white transition-colors"
+            >
+              Book Free Consultation
+            </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Swiper Slider Section */}
+      <section className="py-16 px-4 w-full">
+        <div className="w-full max-w-full">
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            spaceBetween={30}
+            slidesPerView={1}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            loop={true}
+            className="mySwiper"
+          >
+            {homeData.sliderImages.map((image, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] object-cover rounded-lg"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
+
+      {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8">
+            Our Recent Works
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {homeData.featured.map((item, index) => (
+              <div key={index} className="text-center">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-64 object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-600 mb-4">{item.description}</p>
+                <a
+                  href={item.url}
+                  className="text-blue-600 hover:text-blue-800 font-semibold"
+                >
+                  Learn More
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

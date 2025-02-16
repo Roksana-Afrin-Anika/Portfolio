@@ -1,0 +1,13 @@
+{
+  "title": "Patio Revival",
+  "date": "2023-08-01",
+  "type": "portfolio",
+  "image": "images/projects/patio-revival/thumb.png",
+  "category": [""],
+  "project_images": [
+    "images/projects/patio-revival/1.jpg",
+    "images/projects/patio-revival/2.jpg",
+    "images/projects/patio-revival/3.jpg",
+    "images/projects/patio-revival/4.JPG"
+  ]
+}

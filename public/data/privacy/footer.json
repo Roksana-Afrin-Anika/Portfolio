@@ -1,0 +1,31 @@
+{
+  "brand": {
+    "name": "NU CURATIONS",
+    "tagline": "Creating spaces that inspire and delight."
+  },
+  "socialMedia": {
+    "title": "Follow Us",
+    "links": [
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/pallavikaleinteriors"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/pallavikaleinteriors"
+      },
+      {
+        "name": "Pinterest",
+        "url": "https://www.pinterest.com/pallavikaleinteriors"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "info@nucurations.com",
+    "phone": "+91 12345 67890"
+  },
+  "copyright": {
+    "text": "© 2024 NU CURATIONS. All rights reserved."
+  }
+}
