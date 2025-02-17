@@ -25,7 +25,7 @@ export default function Footer() {
   if (!footerData) return <p className="text-center py-8">Loading footer...</p>;
 
   return (
-    <footer className="bg-[#f8f8f8] text-[#333] py-[60px] px-5 font-open-sans">
+    <footer className="bg-[#f8f8f8] text-[#333] py-[60px] px-5 font-orpheus">
       <div className="max-w-[1200px] mx-auto flex flex-wrap gap-10 justify-between">
         {/* Brand Section */}
         <div className="flex-1 min-w-[250px]">

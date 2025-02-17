@@ -1,30 +1,21 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Portfolio({ projects }) {
   return (
-    <div className="container mx-auto px-8 sm:px-12 lg:px-16 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
-          >
-            <Link href={`/portfolio/${project.slug}`}>
-              <div className="relative h-64">
-                <Image
-                  src={`/${project.image}`} // Ensure the path starts with '/'
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
-                <p className="text-gray-600">{project.date}</p>
-              </div>
-            </Link>
-          </div>
+    <div className="container mx-auto px-4 py-8">
+      {/* Render list of projects */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <Link key={project.slug} href={`/portfolio/${project.slug}`}>
+            <div className="relative group">
+              <img
+                src={`/${project.image}`} // Ensure correct path
+                alt={project.title}
+                className="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
+              />
+              <h3 className="text-xl font-bold mt-2">{project.title}</h3>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

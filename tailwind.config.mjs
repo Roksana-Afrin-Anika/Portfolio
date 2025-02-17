@@ -11,6 +11,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        orpheus: ["Orpheus Pro", "serif"], // Define custom font
+      },
     },
   },
   plugins: [],

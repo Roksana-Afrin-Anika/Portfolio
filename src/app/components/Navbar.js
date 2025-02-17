@@ -45,7 +45,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-white sticky top-0 z-50 h-24">
+    <nav className="bg-white sticky top-0 z-50 h-24 font-orpheus">
       <div className="container mx-auto px-5 flex items-center justify-between h-20 md:h-24 lg:h-28">
         {/* Left - Navigation Links */}
         <ul className="hidden md:flex space-x-4 lg:space-x-6 flex-1 justify-start pl-4 md:pl-6 lg:pl-8">

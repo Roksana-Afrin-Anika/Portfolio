@@ -6,7 +6,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>My Portfolio</title>
+        <title>NU Curations</title>
       </head>
       <body className="flex flex-col min-h-screen bg-white text-gray-900">
         <Navbar />

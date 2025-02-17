@@ -1,7 +1,6 @@
 {
   "hero": {
     "title": "A Full Service Interior Design  Studio Offering Luxury Services In Greater Seattle Area",
-    "backgroundImage": "/data/images/fabrics.png",
     "cta": {
       "text": "See Our Works",
       "url": "/portfolio"
