@@ -33,7 +33,8 @@ async function getAllProjects() {
 }
 
 export default async function ProjectPage({ params }) {
-  const { slug } = params;
+  // Await params to resolve dynamically
+  const { slug } = await params;
 
   if (!slug) return <p>Loading...</p>;
 
@@ -50,9 +51,11 @@ export default async function ProjectPage({ params }) {
         : null;
 
     return (
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-8 font-orpheus">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 font-orpheus">
         {/* Title */}
-        <h1 className="text-4xl font-bold text-center mb-8">{project.title}</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6">
+          {project.title}
+        </h1>
 
         {/* Project Description */}
         <div className="max-w-4xl mx-auto mb-8 text-lg text-center">
@@ -66,7 +69,7 @@ export default async function ProjectPage({ params }) {
               project.project_images.map((image, index) => (
                 <div
                   key={index}
-                  className="relative overflow-hidden rounded-lg shadow-md group"
+                  className="relative overflow-hidden rounded-lg shadow-lg group"
                 >
                   <Image
                     src={`/${image}`} // Ensure correct path
@@ -87,30 +90,42 @@ export default async function ProjectPage({ params }) {
         </div>
 
         {/* Previous/Next Navigation */}
-        <div className="flex justify-between mt-8 border-t pt-8">
+        <div className="flex justify-between mt-12 border-t pt-8 gap-4">
           {prevProject ? (
             <Link
               href={`/portfolio/${prevProject.slug}`}
-              className="px-6 py-3 bg-[#8B5E3C] text-white rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105"
+              className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
             >
-              ← {prevProject.slug.replace(/-/g, " ")}
+              <span className="mr-2">←</span>
+              <span className="hidden sm:inline">
+                {prevProject.slug.replace(/-/g, " ")}
+              </span>
+              <span className="sm:hidden">Previous</span>
             </Link>
           ) : (
-            <span className="px-6 py-3 bg-[#8B5E3C] text-white rounded-xl opacity-50 cursor-not-allowed">
-              ← Previous
+            <span className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl opacity-50 cursor-not-allowed">
+              <span className="mr-2">←</span>
+              <span className="hidden sm:inline">Previous</span>
+              <span className="sm:hidden">Previous</span>
             </span>
           )}
 
           {nextProject ? (
             <Link
               href={`/portfolio/${nextProject.slug}`}
-              className="px-6 py-3 bg-[#8B5E3C] text-white rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105"
+              className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
             >
-              {nextProject.slug.replace(/-/g, " ")} →
+              <span className="hidden sm:inline">
+                {nextProject.slug.replace(/-/g, " ")}
+              </span>
+              <span className="sm:hidden">Next</span>
+              <span className="ml-2">→</span>
             </Link>
           ) : (
-            <span className="px-6 py-3 bg-[#8B5E3C] text-white rounded-xl opacity-50 cursor-not-allowed">
-              Next →
+            <span className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl opacity-50 cursor-not-allowed">
+              <span className="hidden sm:inline">Next</span>
+              <span className="sm:hidden">Next</span>
+              <span className="ml-2">→</span>
             </span>
           )}
         </div>

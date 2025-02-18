@@ -51,7 +51,7 @@ export default function Home() {
                   src={image}
                   alt={`Slide ${index + 1}`}
                   loading="lazy"
-                  className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] object-cover rounded-lg"
+                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[700px] object-cover rounded-lg"
                 />
               </SwiperSlide>
             ))}
@@ -60,12 +60,9 @@ export default function Home() {
       </section>
 
       {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
-      {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
       <section className="py-16 bg-gray-100">
-        {" "}
-        {/* Add background or padding */}
-        <div className="w-full">
-          <h2 className="text-3xl font-bold text-center mb-8">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
             Our Recent Works
           </h2>
 
@@ -73,14 +70,14 @@ export default function Home() {
           <div className="relative w-full overflow-hidden">
             <Swiper
               modules={[Navigation]}
-              spaceBetween={5}
-              slidesPerView={3}
+              spaceBetween={10}
+              slidesPerView={1}
               breakpoints={{
                 640: {
-                  slidesPerView: 2.5,
+                  slidesPerView: 2,
                 },
                 1024: {
-                  slidesPerView: 3.5,
+                  slidesPerView: 3,
                 },
               }}
               navigation={{
@@ -96,9 +93,11 @@ export default function Home() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-[500px] object-cover rounded-lg"
+                      className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-lg"
                     />
-                    <h3 className="text-xl font-semibold mt-4">{item.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold mt-4">
+                      {item.title}
+                    </h3>
                   </div>
                 </SwiperSlide>
               ))}
@@ -108,7 +107,7 @@ export default function Home() {
             <div className="featured-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer bg-white/80 p-3 rounded-full shadow-lg hover:bg-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-gray-700"
+                className="h-6 w-6 sm:h-8 sm:w-8 text-gray-700"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -124,7 +123,7 @@ export default function Home() {
             <div className="featured-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer bg-white/80 p-3 rounded-full shadow-lg hover:bg-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-gray-700"
+                className="h-6 w-6 sm:h-8 sm:w-8 text-gray-700"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
