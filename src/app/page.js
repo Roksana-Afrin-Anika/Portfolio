@@ -1,10 +1,9 @@
 "use client"; // Ensure this is a Client Component if using Next.js
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade"; // Ensure you import the fade effect CSS
 
@@ -26,10 +25,10 @@ export default function Home() {
   return (
     <div className="font-orpheus">
       {/* Swiper Slider Section */}
-      <section className="w-full h-screen overflow-hidden">
+      <section className="w-full h-screen overflow-hidden mb-0">
         <div className="w-full h-full">
           <Swiper
-            modules={[Autoplay, Pagination, Navigation, EffectFade]} // Add EffectFade module
+            modules={[Autoplay, Navigation, EffectFade]} // Removed Pagination module
             spaceBetween={30}
             slidesPerView={1}
             effect="fade" // Use the fade effect
@@ -37,7 +36,6 @@ export default function Home() {
               delay: 3000,
               disableOnInteraction: false,
             }}
-            pagination={{ clickable: true }}
             navigation={{
               nextEl: ".custom-next",
               prevEl: ".custom-prev",
@@ -51,7 +49,7 @@ export default function Home() {
                   src={image}
                   alt={`Slide ${index + 1}`}
                   loading="lazy"
-                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[700px] object-cover rounded-lg"
+                  className="w-full h-screen object-cover rounded-lg"
                 />
               </SwiperSlide>
             ))}
@@ -60,9 +58,9 @@ export default function Home() {
       </section>
 
       {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-8 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">
             Our Recent Works
           </h2>
 
@@ -75,9 +73,11 @@ export default function Home() {
               breakpoints={{
                 640: {
                   slidesPerView: 2,
+                  spaceBetween: 15, // Added space between items on smaller screens
                 },
                 1024: {
                   slidesPerView: 3,
+                  spaceBetween: 20, // Added space between items on larger screens
                 },
               }}
               navigation={{

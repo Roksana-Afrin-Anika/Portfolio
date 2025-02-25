@@ -75,25 +75,25 @@ export default function Navbar() {
             <img
               src={navData.brand.logo}
               alt={navData.brand.name}
-              className="h-4"
+              className="h-6"
             />
           </Link>
         </div>
 
         {/* Right - Social Media Links */}
-        <div className="hidden md:flex space-x-4 flex-1 justify-end pr-4 md:pr-6 lg:pr-8">
-          {Object.entries(navData.socialMedia).map(([key, url]) => (
+        <div className="hidden md:flex space-x-6 flex-1 justify-end pr-4 md:pr-6 lg:pr-8">
+          {navData.socialMedia.map(({ name, url }) => (
             <Link
-              key={key}
+              key={name}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
             >
               <img
-                src={`/data/icons/${key}.png`}
-                alt={key}
-                className="h-6 w-6"
+                src={`/data/icons/${name}.png`}
+                alt={name}
+                className="h-5.3 w-6"
               />
             </Link>
           ))}

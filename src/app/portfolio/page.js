@@ -40,14 +40,6 @@ export default async function PortfolioPage({ params }) {
 
   return (
     <div>
-      {/* Render _index.json content at the top */}
-      <div className="container mx-auto px-4 py-8 text-center font-orpheus">
-        <h1 className="text-4xl font-bold mb-4">{indexData.title}</h1>
-        <p className="text-gray-600">
-          Published on: {new Date(indexData.date).toLocaleDateString()}
-        </p>
-      </div>
-
       {/* Pass projects and slug to Portfolio component */}
       <Portfolio projects={projects} />
     </div>

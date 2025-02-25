@@ -20,9 +20,9 @@ export default function AboutSection() {
 
   return (
     <section className="relative font-orpheus pt-[30px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center md:items-start gap-12">
-        {/* About Image - More Left & Vertically Centered */}
-        <div className="w-full md:w-5/12 flex justify-start flex items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center gap-12">
+        {/* About Image - Centered Vertically */}
+        <div className="w-full md:w-5/12 flex justify-center items-center">
           <img
             src={aboutData.about_image}
             alt="About Me"
@@ -30,8 +30,8 @@ export default function AboutSection() {
           />
         </div>
 
-        {/* Text Section - Aligned to start from the same place as the image */}
-        <div className="w-full md:w-7/12">
+        {/* Text Section - Centered Vertically */}
+        <div className="w-full md:w-7/12 flex flex-col justify-center">
           <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             {aboutData.title}
           </h1>
@@ -41,24 +41,6 @@ export default function AboutSection() {
           <p className="font-montserrat text-lg text-gray-600 mb-8">
             {aboutData.description}
           </p>
-
-          {/* Expertise Section */}
-          <div className="bg-white p-8 rounded-lg">
-            <h3 className="font-montserrat text-2xl font-bold text-gray-900 mb-6">
-              {aboutData.expertise_title}
-            </h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {aboutData.expertise_sectors.map((sector, index) => (
-                <li
-                  key={index}
-                  className="flex items-center text-gray-700 text-lg"
-                >
-                  <span className="mr-2 text-green-500">✔</span>
-                  {sector}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>

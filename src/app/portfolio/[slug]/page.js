@@ -53,30 +53,30 @@ export default async function ProjectPage({ params }) {
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 font-orpheus">
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6">
           {project.title}
         </h1>
 
         {/* Project Description */}
-        <div className="max-w-4xl mx-auto mb-8 text-lg text-center">
+        <div className="max-w-2xl mx-auto mb-6 sm:mb-8 text-base sm:text-lg text-center">
           <p className="text-gray-700">{project.description}</p>
         </div>
 
-        {/* Centered Masonry Grid Layout for Images */}
+        {/* Masonry Grid Layout for Images */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
+          <div className="columns-1 sm:columns-2 gap-2 sm:gap-4 w-full max-w-4xl">
             {project.project_images && project.project_images.length > 0 ? (
               project.project_images.map((image, index) => (
                 <div
                   key={index}
-                  className="relative overflow-hidden rounded-lg shadow-lg group"
+                  className="relative overflow-hidden rounded-lg shadow-lg mb-2 sm:mb-4 break-inside-avoid"
                 >
                   <Image
                     src={`/${image}`} // Ensure correct path
                     alt={`${project.title} - Image ${index + 1}`}
-                    width={500}
-                    height={300} // Dynamic height for different aspect ratios
-                    className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                    width={500} // Base width
+                    height={300} // Base height
+                    className="w-full h-auto object-cover rounded-lg transition-transform duration-300 hover:scale-105"
                     loading="lazy" // Improves performance
                   />
                 </div>
@@ -90,11 +90,11 @@ export default async function ProjectPage({ params }) {
         </div>
 
         {/* Previous/Next Navigation */}
-        <div className="flex justify-between mt-12 border-t pt-8 gap-4">
+        <div className="flex justify-between mt-8 sm:mt-12 border-t pt-6 sm:pt-8 gap-2 sm:gap-4">
           {prevProject ? (
             <Link
               href={`/portfolio/${prevProject.slug}`}
-              className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
+              className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
             >
               <span className="mr-2">←</span>
               <span className="hidden sm:inline">
@@ -103,7 +103,7 @@ export default async function ProjectPage({ params }) {
               <span className="sm:hidden">Previous</span>
             </Link>
           ) : (
-            <span className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl opacity-50 cursor-not-allowed">
+            <span className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl opacity-50 cursor-not-allowed">
               <span className="mr-2">←</span>
               <span className="hidden sm:inline">Previous</span>
               <span className="sm:hidden">Previous</span>
@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }) {
           {nextProject ? (
             <Link
               href={`/portfolio/${nextProject.slug}`}
-              className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
+              className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
             >
               <span className="hidden sm:inline">
                 {nextProject.slug.replace(/-/g, " ")}
@@ -122,7 +122,7 @@ export default async function ProjectPage({ params }) {
               <span className="ml-2">→</span>
             </Link>
           ) : (
-            <span className="flex items-center justify-center px-6 py-3 bg-[#8B5E3C] text-white rounded-xl opacity-50 cursor-not-allowed">
+            <span className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl opacity-50 cursor-not-allowed">
               <span className="hidden sm:inline">Next</span>
               <span className="sm:hidden">Next</span>
               <span className="ml-2">→</span>

@@ -13,7 +13,6 @@ export default function Portfolio({ projects }) {
                 alt={project.title}
                 className="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
               />
-              <h3 className="text-xl font-bold mt-2">{project.title}</h3>
             </div>
           </Link>
         ))}

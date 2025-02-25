@@ -25,9 +25,18 @@
       "url": "/contact"
     }
   ],
-  "socialMedia": {
-    "instagram": "https://www.instagram.com/nu_curation/",
-    "facebook": "https://www.facebook.com/pallavikaleinteriors",
-    "pinterest": "https://www.pinterest.com/pallavikaleinteriors"
-  }
+  "socialMedia": [
+    {
+      "name": "instagram",
+      "url": "https://www.instagram.com/nu_curation/"
+    },
+    {
+      "name": "facebook",
+      "url": "https://www.facebook.com/pallavikaleinteriors"
+    },
+    {
+      "name": "email",
+      "url": "mailto:example@email.com"
+    }
+  ]
 }
