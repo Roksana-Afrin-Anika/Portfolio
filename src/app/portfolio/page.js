@@ -39,8 +39,8 @@ export default async function PortfolioPage({ params }) {
   const { indexData, projects } = await getPortfolioData();
 
   return (
-    <div>
-      {/* Pass projects and slug to Portfolio component */}
+    <div className="bg-gray-100 min-h-screen p-8">
+      {/* Light gray background and padding */}
       <Portfolio projects={projects} />
     </div>
   );

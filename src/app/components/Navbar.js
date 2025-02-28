@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Import usePathname
 
 export default function Navbar() {
   const [navData, setNavData] = useState(null);
   const [error, setError] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname(); // Get the current pathname
 
   useEffect(() => {
     fetch("/data/privacy/navbar.json")
@@ -23,14 +24,13 @@ export default function Navbar() {
       });
   }, []);
 
-  const handleClick = (index) => {
-    setActiveIndex(index);
-    setMobileMenuOpen(false);
+  const handleClick = () => {
+    setMobileMenuOpen(false); // Close mobile menu on link click
   };
 
   if (error) {
     return (
-      <nav className="bg-white shadow-md sticky top-0 z-50 h-24 flex items-center justify-center">
+      <nav className="bg-white shadow-md h-24 flex items-center justify-center">
         Failed to load navbar.
       </nav>
     );
@@ -38,30 +38,32 @@ export default function Navbar() {
 
   if (!navData) {
     return (
-      <nav className="bg-white shadow-md sticky top-0 z-50 h-24 flex items-center justify-center">
+      <nav className="bg-white shadow-md h-24 flex items-center justify-center">
         Loading...
       </nav>
     );
   }
 
   return (
-    <nav className="bg-white sticky top-0 z-50 h-24 font-orpheus">
+    <nav className="bg-white font-orpheus text-black text-base lg:text-lg text-gray-800 hover:text-black transition-colors font-normal h-auto leading-[32.688px] tracking-[0.7264px] pb-[1.816px] pt-[1.816px] no-underline whitespace-nowrap">
       <div className="container mx-auto px-5 flex items-center justify-between h-20 md:h-24 lg:h-28">
         {/* Left - Navigation Links */}
-        <ul className="hidden md:flex space-x-4 lg:space-x-6 flex-1 justify-start pl-4 md:pl-6 lg:pl-8">
+        <ul className="hidden md:flex space-x-4 lg:space-x-6 flex-1 justify-start">
           {navData.menu.map((item, index) => (
             <li
               key={index}
               className={`cursor-pointer pb-1 transition-all ${
-                activeIndex === index
+                pathname === item.url
                   ? "border-b-2 border-black"
-                  : "hover:border-b-2 border-black"
+                  : "hover:transparent border-black"
               }`}
-              onClick={() => handleClick(index)}
+              onClick={handleClick}
             >
               <Link
                 href={item.url}
-                className="text-base lg:text-lg text-gray-800 hover:text-black transition-colors"
+                className={`text-base lg:text-lg ${
+                  pathname === item.url ? "text-black" : "text-gray-800"
+                } hover:text-black transition-colors`}
               >
                 {item.name}
               </Link>
@@ -81,7 +83,7 @@ export default function Navbar() {
         </div>
 
         {/* Right - Social Media Links */}
-        <div className="hidden md:flex space-x-6 flex-1 justify-end pr-4 md:pr-6 lg:pr-8">
+        <div className="hidden md:flex space-x-6 flex-1 justify-end">
           {navData.socialMedia.map(({ name, url }) => (
             <Link
               key={name}
@@ -128,17 +130,19 @@ export default function Navbar() {
         <div className="md:hidden bg-white shadow-md absolute w-full left-0 top-20 z-40">
           <ul className="flex flex-col space-y-4 p-4">
             {navData.menu.map((item, index) => (
-              <li key={index} onClick={() => handleClick(index)}>
+              <li key={index} onClick={handleClick}>
                 <Link
                   href={item.url}
-                  className="block text-gray-800 hover:text-black transition-colors"
+                  className={`block ${
+                    pathname === item.url ? "text-black" : "text-gray-800"
+                  } hover:text-black transition-colors`}
                 >
                   {item.name}
                 </Link>
               </li>
             ))}
-            {Object.entries(navData.socialMedia).map(([key, url]) => (
-              <li key={key} className="flex items-center">
+            {navData.socialMedia.map(({ name, url }) => (
+              <li key={name} className="flex items-center">
                 <Link
                   href={url}
                   target="_blank"
@@ -146,8 +150,8 @@ export default function Navbar() {
                   className="hover:opacity-80 transition-opacity"
                 >
                   <img
-                    src={`/data/icons/${key}.png`}
-                    alt={key}
+                    src={`/data/icons/${name}.png`}
+                    alt={name}
                     className="h-6 w-6"
                   />
                 </Link>

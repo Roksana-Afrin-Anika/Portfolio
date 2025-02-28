@@ -3,7 +3,7 @@
   "heading": "Let's Create Something Beautiful Together",
   "formHeading": "TELL US ABOUT YOUR INTERIOR DESIGN PROJECT",
   "process": {
-    "title": "Here’s How It Works",
+    "title": "Here’s How it works:",
     "steps": [
       {
         "phase": "Step 1: Discovery Phase",
@@ -33,11 +33,10 @@
     ]
   },
   "cta": {
-    "text": "Ready to get started? Contact Nu Curations today to schedule your consultation.",
+    "text": "Ready to get started? Contact Nu Curations today to schedule your consultation.If you have any questions or comments, please get in touch with me via email or phone, or send me a message using the contact form.",
     "contactInfo": {
       "email": "nucurations@gmail.com",
-      "phone": "+91 12345 67890",
-      "address": "123 Interior Design Studio, Mumbai, India"
+      "phone": "+91 12345 67890"
     }
   }
 }

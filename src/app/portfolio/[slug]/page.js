@@ -1,7 +1,9 @@
+// app/portfolio/[slug]/page.js
 import fs from "fs";
 import path from "path";
-import Image from "next/image";
 import Link from "next/link";
+import ImageGrid from "@/components/ImageGrid.client";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 async function getProjectData(slug) {
   const filePath = path.join(
@@ -33,8 +35,7 @@ async function getAllProjects() {
 }
 
 export default async function ProjectPage({ params }) {
-  // Await params to resolve dynamically
-  const { slug } = await params;
+  const { slug } = params;
 
   if (!slug) return <p>Loading...</p>;
 
@@ -42,7 +43,6 @@ export default async function ProjectPage({ params }) {
     const project = await getProjectData(slug);
     const allProjects = await getAllProjects();
 
-    // Find the current project index
     const currentIndex = allProjects.findIndex((p) => p.slug === slug);
     const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
     const nextProject =
@@ -52,81 +52,64 @@ export default async function ProjectPage({ params }) {
 
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 font-orpheus">
-        {/* Title */}
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6">
-          {project.title}
-        </h1>
-
         {/* Project Description */}
-        <div className="max-w-2xl mx-auto mb-6 sm:mb-8 text-base sm:text-lg text-center">
+        <div className="max-w-2xl mx-auto mb-6 sm:mb-8 text-base sm:text-lg text-center font-normal">
           <p className="text-gray-700">{project.description}</p>
         </div>
 
-        {/* Masonry Grid Layout for Images */}
-        <div className="flex justify-center">
-          <div className="columns-1 sm:columns-2 gap-2 sm:gap-4 w-full max-w-4xl">
-            {project.project_images && project.project_images.length > 0 ? (
-              project.project_images.map((image, index) => (
-                <div
-                  key={index}
-                  className="relative overflow-hidden rounded-lg shadow-lg mb-2 sm:mb-4 break-inside-avoid"
-                >
-                  <Image
-                    src={`/${image}`} // Ensure correct path
-                    alt={`${project.title} - Image ${index + 1}`}
-                    width={500} // Base width
-                    height={300} // Base height
-                    className="w-full h-auto object-cover rounded-lg transition-transform duration-300 hover:scale-105"
-                    loading="lazy" // Improves performance
-                  />
-                </div>
-              ))
-            ) : (
-              <p className="col-span-full text-center text-gray-500">
-                No images available for this project.
-              </p>
-            )}
-          </div>
-        </div>
-
+        {/* Use the Client Component for the Image Grid */}
+        <ImageGrid
+          images={project.project_images}
+          projectTitle={project.title}
+        />
         {/* Previous/Next Navigation */}
-        <div className="flex justify-between mt-8 sm:mt-12 border-t pt-6 sm:pt-8 gap-2 sm:gap-4">
-          {prevProject ? (
+        <div className="flex justify-between mt-8 sm:mt-12 border-t pt-6 sm:pt-8 gap-2 sm:gap-4 font-normal">
+          {/* Previous Project Link */}
+          {!prevProject ? (
+            <span className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl opacity-0 cursor-not-allowed">
+              {/* Empty space for the left side on first portfolio */}
+            </span>
+          ) : (
             <Link
               href={`/portfolio/${prevProject.slug}`}
-              className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
+              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300"
             >
-              <span className="mr-2">←</span>
-              <span className="hidden sm:inline">
+              <ChevronLeft
+                size={36}
+                strokeWidth={1.5}
+                className="mr-3 sm:mr-4"
+              />
+              <span className="hidden sm:inline font-orpheus capitalize">
                 {prevProject.slug.replace(/-/g, " ")}
               </span>
-              <span className="sm:hidden">Previous</span>
+              <span className="sm:hidden font-orpheus capitalize">
+                Previous
+              </span>
             </Link>
-          ) : (
-            <span className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl opacity-50 cursor-not-allowed">
-              <span className="mr-2">←</span>
-              <span className="hidden sm:inline">Previous</span>
-              <span className="sm:hidden">Previous</span>
-            </span>
           )}
 
-          {nextProject ? (
+          {/* Next Project Link */}
+          {!nextProject ? (
+            <span className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl opacity-0 cursor-not-allowed">
+              {/* Empty space for the right side on last portfolio */}
+            </span>
+          ) : (
             <Link
               href={`/portfolio/${nextProject.slug}`}
-              className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-[#7A4D32] transform hover:scale-105 hover:shadow-lg"
+              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300"
             >
-              <span className="hidden sm:inline">
+              <span className="hidden sm:inline font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
                 {nextProject.slug.replace(/-/g, " ")}
               </span>
-              <span className="sm:hidden">Next</span>
-              <span className="ml-2">→</span>
+              <span className="sm:hidden font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
+                Next
+              </span>
+              <ChevronRight
+                size={36}
+                strokeWidth={1.5}
+                className="ml-3 sm:ml-4"
+              />
             </Link>
-          ) : (
-            <span className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-[#8B5E3C] text-white rounded-lg sm:rounded-xl opacity-50 cursor-not-allowed">
-              <span className="hidden sm:inline">Next</span>
-              <span className="sm:hidden">Next</span>
-              <span className="ml-2">→</span>
-            </span>
           )}
         </div>
       </div>
