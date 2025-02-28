@@ -24,7 +24,7 @@ export default function Footer() {
   if (!footerData) return <p className="text-center py-8">Loading footer...</p>;
 
   return (
-    <footer className="bg-[#f8f8f8] text-[#333] py-8 px-5 font-orpheus">
+    <footer className="bg-transparent text-[#333] py-8 px-5 font-orpheus">
       {/* Copyright Notice */}
       <div className="mt-2 pt-4  text-center">
         <p className="text-base text-black">
