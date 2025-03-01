@@ -72,17 +72,17 @@ export default async function ProjectPage({ params }) {
           ) : (
             <Link
               href={`/portfolio/${prevProject.slug}`}
-              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300"
+              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-gray-100"
             >
               <ChevronLeft
                 size={36}
                 strokeWidth={1.5}
                 className="mr-3 sm:mr-4"
               />
-              <span className="hidden sm:inline font-orpheus capitalize">
+              <span className="hidden sm:inline font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
                 {prevProject.slug.replace(/-/g, " ")}
               </span>
-              <span className="sm:hidden font-orpheus capitalize">
+              <span className="sm:hidden font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
                 Previous
               </span>
             </Link>
@@ -96,7 +96,7 @@ export default async function ProjectPage({ params }) {
           ) : (
             <Link
               href={`/portfolio/${nextProject.slug}`}
-              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300"
+              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-gray-100"
             >
               <span className="hidden sm:inline font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
                 {nextProject.slug.replace(/-/g, " ")}

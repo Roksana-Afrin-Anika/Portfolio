@@ -101,26 +101,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Toggle - Custom Two-Line Icon */}
         <div className="md:hidden">
           <button
             className="text-gray-800 focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
+            {/* Custom Two-Line Icon */}
+            <div className="space-y-1.5">
+              <span className="block h-0.5 w-6 bg-gray-500"></span>
+              <span className="block h-0.5 w-6 bg-gray-500"></span>
+            </div>
           </button>
         </div>
       </div>

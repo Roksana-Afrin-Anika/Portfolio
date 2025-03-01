@@ -56,7 +56,7 @@ export default function Home() {
           </Swiper>
         </div>
       </section>
-
+      {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
       {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
       <section className="py-8 bg-gray-100 font-orpheus">
         <div className="container mx-auto px-4">
@@ -87,7 +87,7 @@ export default function Home() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover mx-auto "
+                      className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover mx-auto"
                     />
                   </div>
                 </SwiperSlide>
@@ -95,11 +95,25 @@ export default function Home() {
             </Swiper>
 
             {/* Custom Navigation Buttons with Arrow Sign */}
-            <div className="featured-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 p-3 rounded-full shadow-lg hover:bg-gray-900/90">
-              <span className="text-2xl sm:text-3xl text-white">←</span>
+            <div className="flex justify-center items-center gap-4 mt-4 md:hidden">
+              {/* Previous Button */}
+              <div className="featured-prev cursor-pointer bg-gray-900/80 p-2 w-10 h-10 flex items-center justify-center rounded-full shadow-lg hover:bg-gray-900/90">
+                <span className="text-xl text-white">←</span>
+              </div>
+              {/* Next Button */}
+              <div className="featured-next cursor-pointer bg-gray-900/80 p-2 w-10 h-10 flex items-center justify-center rounded-full shadow-lg hover:bg-gray-900/90">
+                <span className="text-xl text-white">→</span>
+              </div>
             </div>
-            <div className="featured-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 p-3 rounded-full shadow-lg hover:bg-gray-900/90">
-              <span className="text-2xl sm:text-3xl text-white">→</span>
+
+            {/* Desktop Navigation Buttons */}
+            <div className="hidden md:block">
+              <div className="featured-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 p-3 w-12 h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-gray-900/90">
+                <span className="text-2xl sm:text-3xl text-white">←</span>
+              </div>
+              <div className="featured-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 p-3 w-12 h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-gray-900/90">
+                <span className="text-2xl sm:text-3xl text-white">→</span>
+              </div>
             </div>
           </div>
         </div>
