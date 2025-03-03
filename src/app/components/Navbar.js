@@ -48,7 +48,7 @@ export default function Navbar() {
     <nav className="bg-white font-orpheus text-black text-base lg:text-lg text-gray-800 hover:text-black transition-colors font-normal h-auto leading-[32.688px] tracking-[0.7264px] pb-[1.816px] pt-[1.816px] no-underline whitespace-nowrap">
       <div className="container mx-auto px-5 flex items-center justify-between h-20 md:h-24 lg:h-28">
         {/* Left - Navigation Links */}
-        <ul className="hidden md:flex space-x-4 lg:space-x-6 flex-1 justify-start">
+        <ul className="hidden md:flex space-x-4 gap-3 lg:space-x-6 flex-1 justify-start">
           {navData.menu.map((item, index) => (
             <li
               key={index}
