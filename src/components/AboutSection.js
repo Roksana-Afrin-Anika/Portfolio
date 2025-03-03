@@ -19,19 +19,19 @@ export default function AboutSection() {
   }
 
   return (
-    <section className="relative font-orpheus font-normal -mt-10 pt-0 min-h-screen flex items-center">
+    <section className="relative font-orpheus font-normal min-h-screen flex items-center bg-[#f1f1ef]">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        {/* About Image - Adjusted for visibility */}
-        <div className="w-full md:w-1/2 lg:w-5/12 flex justify-center items-center">
+        {/* About Image - Full height */}
+        <div className="w-full md:w-1/2 lg:w-5/12 flex justify-center items-center h-screen">
           <img
             src={aboutData.about_image}
             alt="About Me"
-            className="w-full h-auto max-h-[70vh] md:max-h-screen object-contain"
+            className="w-full -mt-16 ml-[-200px]  h-full object-cover"
           />
         </div>
 
         {/* Text Section */}
-        <div className="w-full md:w-1/2 lg:w-7/12 flex flex-col justify-center font-orpheus-pro text-center md:text-left">
+        <div className="w-full ml-[-100px] md:w-1/2 lg:w-7/12 flex flex-col justify-center font-orpheus-pro text-center md:text-left">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-black mb-4 sm:mb-6">
             {aboutData.title}
           </h1>
