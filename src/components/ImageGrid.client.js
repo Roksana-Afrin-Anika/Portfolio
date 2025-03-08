@@ -30,16 +30,25 @@ export default function ImageGrid({ images, projectTitle }) {
             images.map((image, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden mb-2 sm:mb-4 break-inside-avoid cursor-pointer"
+                className="relative mb-2 sm:mb-4 break-inside-avoid cursor-pointer"
                 onClick={() => setSelectedImageIndex(index)}
               >
-                <div className="relative w-full h-auto aspect-[4/3]">
+                <div
+                  className="relative w-full h-auto"
+                  style={{ lineHeight: 0, display: "block" }}
+                >
                   <Image
-                    src={`/${image}`}
+                    src={`/${image}`} // Ensure the path starts with `/`
                     alt={`${projectTitle} - Image ${index + 1}`}
-                    fill
-                    className="object-cover"
+                    width={1200} // Default width
+                    height={800} // Default height
+                    className="w-full h-auto object-cover"
                     loading="lazy"
+                    onLoadingComplete={(img) => {
+                      // Dynamically adjust the aspect ratio
+                      const aspectRatio = img.naturalWidth / img.naturalHeight;
+                      img.parentElement.style.aspectRatio = aspectRatio;
+                    }}
                   />
                 </div>
               </div>
@@ -60,7 +69,7 @@ export default function ImageGrid({ images, projectTitle }) {
         >
           <div className="relative w-full h-full flex items-center justify-center">
             <button
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-700"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-700 p-2 hover:bg-transparent hover:text-gray-700"
               onClick={(e) => {
                 e.stopPropagation();
                 handlePrev();
@@ -70,7 +79,7 @@ export default function ImageGrid({ images, projectTitle }) {
             </button>
 
             <Image
-              src={`/${images[selectedImageIndex]}`}
+              src={`/${images[selectedImageIndex]}`} // Ensure the path starts with `/`
               alt={`${projectTitle} - Full Size`}
               width={1200}
               height={800}
@@ -79,7 +88,7 @@ export default function ImageGrid({ images, projectTitle }) {
             />
 
             <button
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-700"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-700 p-2 hover:bg-transparent hover:text-gray-700"
               onClick={(e) => {
                 e.stopPropagation();
                 handleNext();

@@ -27,7 +27,7 @@ export default function Footer() {
     <footer className="bg-transparent text-[#333] py-8 px-5 font-orpheus">
       {/* Copyright Notice */}
       <div className="mt-2 pt-4  text-center">
-        <p className="text-base text-black">
+        <p className="text-base text-black mb-6">
           {footerData.copyright.text.replace(/\d{4}/, new Date().getFullYear())}
         </p>
       </div>

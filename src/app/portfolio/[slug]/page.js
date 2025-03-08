@@ -1,4 +1,3 @@
-// app/portfolio/[slug]/page.js
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
@@ -62,27 +61,28 @@ export default async function ProjectPage({ params }) {
           images={project.project_images}
           projectTitle={project.title}
         />
+
         {/* Previous/Next Navigation */}
-        <div className="flex justify-between mt-8 sm:mt-12 border-t pt-6 sm:pt-8 gap-2 sm:gap-4 font-normal">
+        <div className="flex justify-between mt-8 sm:mt-12 gap-4 sm:gap-6 font-normal">
           {/* Previous Project Link */}
           {!prevProject ? (
-            <span className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl opacity-0 cursor-not-allowed">
+            <span className="invisible flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-black text-base sm:text-lg font-medium sm:rounded-xl opacity-0 cursor-not-allowed">
               {/* Empty space for the left side on first portfolio */}
             </span>
           ) : (
             <Link
               href={`/portfolio/${prevProject.slug}`}
-              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-gray-100"
+              className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-black text-base sm:text-lg font-medium sm:rounded-xl transition-all duration-300"
             >
               <ChevronLeft
-                size={36}
+                size={28}
                 strokeWidth={1.5}
-                className="mr-3 sm:mr-4"
+                className="mr-2 sm:mr-3"
               />
-              <span className="hidden sm:inline font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
+              <span className="hidden sm:inline font-orpheus font-normal tracking-normal text-[18px] sm:text-[21.4px] capitalize">
                 {prevProject.slug.replace(/-/g, " ")}
               </span>
-              <span className="sm:hidden font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
+              <span className="sm:hidden font-orpheus font-normal tracking-normal text-[18px] capitalize">
                 Previous
               </span>
             </Link>
@@ -90,24 +90,24 @@ export default async function ProjectPage({ params }) {
 
           {/* Next Project Link */}
           {!nextProject ? (
-            <span className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl opacity-0 cursor-not-allowed">
+            <span className="invisible flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-black text-base sm:text-lg font-medium rounded-lg sm:rounded-xl opacity-0 cursor-not-allowed">
               {/* Empty space for the right side on last portfolio */}
             </span>
           ) : (
             <Link
               href={`/portfolio/${nextProject.slug}`}
-              className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-black text-lg sm:text-xl font-medium rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-gray-100"
+              className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-black text-base sm:text-lg font-medium rounded-lg sm:rounded-xl transition-all duration-300"
             >
-              <span className="hidden sm:inline font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
+              <span className="hidden sm:inline font-orpheus font-normal tracking-normal text-[18px] sm:text-[21.4px] capitalize">
                 {nextProject.slug.replace(/-/g, " ")}
               </span>
-              <span className="sm:hidden font-orpheus font-normal tracking-normal text-[21.4px] capitalize">
+              <span className="sm:hidden font-orpheus font-normal tracking-normal text-[18px] capitalize">
                 Next
               </span>
               <ChevronRight
-                size={36}
+                size={28}
                 strokeWidth={1.5}
-                className="ml-3 sm:ml-4"
+                className="ml-2 sm:ml-3"
               />
             </Link>
           )}
