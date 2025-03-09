@@ -38,7 +38,7 @@ export default function AboutSection() {
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-normal text-gray-900 mb-4 sm:mb-6">
             {aboutData.heading}
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 text-black not-italic font-normal">
+          <p className="text-sm sm:text-base  text-[18.16px] font-normal lg:text-lg text-gray-600 text-black not-italic font-normal">
             {aboutData.description}
           </p>
         </div>

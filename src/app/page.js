@@ -49,7 +49,7 @@ export default function Home() {
                   src={image}
                   alt={`Slide ${index + 1}`}
                   loading="lazy"
-                  className="w-full h-screen object-cover rounded-lg"
+                  className="w-full h-screen object-cover"
                 />
               </SwiperSlide>
             ))}
@@ -57,12 +57,15 @@ export default function Home() {
         </div>
       </section>
       {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
-      {/* Render Other Sections (Featured, About, Services, Testimonials, CTA) */}
       <section className="py-8 bg-gray-100 font-orpheus">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold font-orpheus text-center mb-4">
-            Our Recent Works
-          </h2>
+          <p
+            className="text-lg sm:text-xl font-normal mt-2 mb-2 mx-7 block normal-case  
+             tracking-[0.7264px] antialiased text-center break-words font-orpheus
+             md:mb-8 lg:mb-12"
+          >
+            {homeData.hero.cta.text}
+          </p>
 
           {/* Swiper Slider for Vertical Images */}
           <div className="relative w-full overflow-hidden">
